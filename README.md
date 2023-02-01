@@ -57,4 +57,4 @@ For any questions regarding this application or any other project by adodt:
 
 ### Email: [Gmail](allidodt@gmail.com)
 
-### Gihub Profile: [YogiBruce](https://github.com/adodt) 
+### Gihub Profile: [adodt](https://github.com/adodt) 
