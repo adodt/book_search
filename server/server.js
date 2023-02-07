@@ -5,6 +5,7 @@ const db = require('./config/connection');
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require("./schemas");
 const { authMiddleware } = require("./utils/auth");
+const { response } = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -19,9 +20,11 @@ app.use(express.json());
 
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.use(express.static(path.join(__dirname, 'public')));
 }
-
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, 'public','index.html'))
+})
 const startApolloServer = async (typeDefs, resolvers ) => {
   await server.start();
   server.applyMiddleware({ app });
@@ -34,12 +37,6 @@ const startApolloServer = async (typeDefs, resolvers ) => {
   });
 };
 
-// mongoose.connect(
-//   process.env.MONGODB_URI || 'mongodb://localhost:27017/your-database-name',
-//   {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   },
-// );
+
 
 startApolloServer(typeDefs, resolvers);
