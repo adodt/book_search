@@ -39,3 +39,5 @@ const auth = {
 };
 
 module.exports = auth
+
+mongodb+srv://AlliDodt:Harryp22!@cluster0.r32engk.mongodb.net/Book_Search?retryWrites=true&w=majority
